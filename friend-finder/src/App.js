@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 import LoginForm from './components/LoginForm';
 import SignUp from './components/SignUp';
 import './App.css';
@@ -6,8 +7,8 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-    <SignUp />
-    <LoginForm />
+    <Route exact path = '/' component={SignUp}/>
+    <Route exact path = '/login' component={LoginForm}/>
     </div>
   );
 }
