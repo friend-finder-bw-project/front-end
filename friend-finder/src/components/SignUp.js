@@ -1,12 +1,30 @@
 // Luis & Colin 
 
-import React from 'react';
+import React,{ useState, useEffect }   from 'react';
 import ReactDom from 'react-dom';
+import axios from 'axios';
 import { withFormik, Form, Field, ErrorMessage } from 'formik';
 import { Link } from 'react-router-dom';
 import * as Yup from "yup";
 
-function SignUp() {
+
+
+
+function SignUp(props) {
+
+  const [newUser, fetchNewUser] = useState ([])
+
+  useEffect(() => {
+    axios.get('https://friend-finder-backend.herokuapp.com/api/auth/register')
+              .then(responce => {
+                  console.log(responce.data);
+                  //fetchNewUser(responce.data);
+              })
+              .catch(error => {
+                  console.log(error);
+              })
+  }, []);
+
   return (
     <div >
       <h1>Sign Up Here!</h1>
@@ -85,6 +103,8 @@ const SignUpWithFormik = withFormik({
   })
 
 })(SignUp);
+
+
 
 export default SignUpWithFormik;
 
