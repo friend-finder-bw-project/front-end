@@ -18,7 +18,9 @@ export default function Nav() {
 
         <Link to="/messages">Messages</Link>
 
-        <Link to="/friends">Friends</Link>
+        <Link to="/friendslist">Friends</Link>
+
+        
         
         
         </nav>
