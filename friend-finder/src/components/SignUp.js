@@ -51,7 +51,9 @@ function SignUp() {
             placeholder="Password"
           />
         </label>
+        <Link to='/survey'>
         <input type="submit" />
+        </Link>
       </Form>
       <p>
         If you allready have an account click here!
