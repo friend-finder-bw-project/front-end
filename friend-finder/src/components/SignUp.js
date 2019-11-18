@@ -1,12 +1,17 @@
 // Luis & Colin 
 
-import React from 'react';
+import React,{ useState, useEffect }   from 'react';
 import ReactDom from 'react-dom';
+import axios from 'axios';
 import { withFormik, Form, Field, ErrorMessage } from 'formik';
 import { Link } from 'react-router-dom';
 import * as Yup from "yup";
 
-function SignUp() {
+
+
+
+function SignUp(props) {
+
   return (
     <div >
       <h1>Sign Up Here!</h1>
@@ -85,6 +90,8 @@ const SignUpWithFormik = withFormik({
   })
 
 })(SignUp);
+
+
 
 export default SignUpWithFormik;
 
