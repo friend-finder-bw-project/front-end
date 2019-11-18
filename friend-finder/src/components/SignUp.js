@@ -12,19 +12,6 @@ import * as Yup from "yup";
 
 function SignUp(props) {
 
-  const [newUser, fetchNewUser] = useState ([])
-
-  useEffect(() => {
-    axios.get('https://friend-finder-backend.herokuapp.com/api/auth/register')
-              .then(responce => {
-                  console.log(responce.data);
-                  //fetchNewUser(responce.data);
-              })
-              .catch(error => {
-                  console.log(error);
-              })
-  }, []);
-
   return (
     <div >
       <h1>Sign Up Here!</h1>
