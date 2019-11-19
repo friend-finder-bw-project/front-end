@@ -10,6 +10,19 @@ import * as Yup from "yup";
 
 function SignUp(props) {
 
+  const handleSubmit = (values, tools) => {
+    console.log(values, tools);
+
+    axios.post("https://friend-finder-server.herokuapp.com/api/auth/register", values)
+      .then(response => {
+        console.log(response.data);
+        tools.resetForm();
+      })
+      .catch(error => {
+        console.log('not working');
+      })
+  }
+
   return (
     <div >
       <h1>Sign Up Here!</h1>
@@ -31,7 +44,7 @@ function SignUp(props) {
           />
         </label>
         <Link to='/survey'>
-          <input type="submit" />
+          <button onClick={() => {handleSubmit()}}>Submit</button>
         </Link>
       </Form>
       <p>
@@ -47,25 +60,17 @@ function SignUp(props) {
 const SignUpWithFormik = withFormik({
   mapPropsToValues() {
     return {
-      firstName: "",
-      lastName: "",
-      mailAdress: "",
       userName: "",
       password: ""
     };
   },
 
   validationSchema: Yup.object().shape({
-    firstName: Yup.string().required(""),
-    lastName: Yup.string().required(""),
-    mailAdress: Yup.string().required(""),
     userName: Yup.string().required(""),
     password: Yup.string().required("")
-  })
+  }),
 
 })(SignUp);
-
-
 
 export default SignUpWithFormik;
 

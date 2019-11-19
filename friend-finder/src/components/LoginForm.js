@@ -1,16 +1,12 @@
 // Colin and Luis
 
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDom from 'react-dom';
 import { withFormik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from "yup";
-import Axios from 'axios';
+import axios from 'axios';
 
 function LoginForm(props) {
-
-    Axios.post('https://friend-finder-server.herokuapp.com/api/auth/register')
-        .then()
-        .catch()
 
     return (
         <div>
