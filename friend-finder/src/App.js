@@ -20,11 +20,10 @@ const [formValues,setFormValues] = useState({
     <div className="App">
     <Nav />
 
-    <Route exact path = '/' render={props => <SignUp formValues={formValues} setFormValues={setFormValues} {...props}/>}/>
+    <Route exact path = '/' component={SignUp}/>
     <Route exact path = '/login' component={LoginForm}/>
-    <Route  path="/profile" component={Profile}/>
     <Route exact path = '/survey' component={Survey}/>
-    {/* <Route exact path = '/profile' component={Profile}/> */}
+    <Route exact path = '/profile' component={Profile}/>
     <Route exact path = '/friendslist' component={FriendsList}/>
 
     </div>

@@ -1,6 +1,6 @@
 // Luis & Colin 
 
-import React,{ useState, useEffect }   from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDom from 'react-dom';
 import axios from 'axios';
 import { withFormik, Form, Field, ErrorMessage } from 'formik';
@@ -9,64 +9,24 @@ import * as Yup from "yup";
 
 
 function SignUp(props) {
-//   console.log("props");
-//   const {formValues, setFormValues} = props;
-//   const handleChange = e => {
-//     setFormValues({ ...formValues, [e.target.name]: e.target.value });
-//   };
-//   const handleSubmit = e => {
-//       e.preventDefault();
-//       axios.post("https://friend-finder-backend.herokuapp.com/api/auth/register",formValues)
-//       .then(res => {
-//           console.log(res);
-//           props.history.push("/login");
-//       })
-//       .catch(err => {
-//           console.log(err);
-//       })
-//   }
-//   console.log("form values", formValues);
-//   return (
-//     <div>
-//       <form>
-//         <input value={formValues.username} placeholder="username" name="username" onChange={handleChange} />
-//         <input value={formValues.password} placeholder="password" name="password" onChange={handleChange} />
-//         <button onClick={handleSubmit} >Submit</button>
-//       </form>
-//     </div>
-//   );
-// };
 
-// export default SignUp;
+  const handleSubmit = (values, tools) => {
+    console.log(values, tools);
+
+    axios.post("https://friend-finder-server.herokuapp.com/api/auth/register", values)
+      .then(response => {
+        console.log(response.data);
+        tools.resetForm();
+      })
+      .catch(error => {
+        console.log('not working');
+      })
+  }
 
   return (
     <div >
       <h1>Sign Up Here!</h1>
       <Form>
-        <label>
-          First Name:
-                <Field
-            type="text"
-            name="firstName"
-            placeholder="First Name"
-          />
-        </label>
-        <label>
-          Last Name:
-                <Field
-            type="text"
-            name="lastName"
-            placeholder="Last Name"
-          />
-        </label>
-        <label>
-          Email Adress:
-                <Field
-            type="email"
-            name="mailAdress"
-            placeholder="Email Adress"
-          />
-        </label>
         <label>
           User Name:
                 <Field
@@ -84,7 +44,7 @@ function SignUp(props) {
           />
         </label>
         <Link to='/survey'>
-        <input type="submit" />
+          <button onClick={() => {handleSubmit()}}>Submit</button>
         </Link>
       </Form>
       <p>
@@ -100,25 +60,17 @@ function SignUp(props) {
 const SignUpWithFormik = withFormik({
   mapPropsToValues() {
     return {
-      firstName: "",
-      lastName: "",
-      mailAdress: "",
       userName: "",
       password: ""
     };
   },
 
   validationSchema: Yup.object().shape({
-    firstName: Yup.string().required(""),
-    lastName: Yup.string().required(""),
-    mailAdress: Yup.string().required(""),
     userName: Yup.string().required(""),
     password: Yup.string().required("")
-  })
+  }),
 
 })(SignUp);
-
-
 
 export default SignUpWithFormik;
 
