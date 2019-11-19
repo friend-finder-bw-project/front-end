@@ -1,55 +1,57 @@
-// Luis & Colin 
+// Luis & Colin
 
-import React, { useState, useEffect } from 'react';
-import ReactDom from 'react-dom';
-import axios from 'axios';
-import { withFormik, Form, Field, ErrorMessage } from 'formik';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import ReactDom from "react-dom";
+import axios from "axios";
+import { withFormik, Form, Field, ErrorMessage } from "formik";
+import { Link } from "react-router-dom";
 import * as Yup from "yup";
 
 
 function SignUp(props) {
+  
+  const [newUser, setNewUser] = useState({
+    userName: "",
+    password: ""
+  });
 
   const handleSubmit = (values, tools) => {
     console.log(values, tools);
 
-    axios.post("https://friend-finder-server.herokuapp.com/api/auth/register", values)
+    axios
+      .post("https://friend-finder-server.herokuapp.com/api/auth/register", {})
       .then(response => {
         console.log(response.data);
         tools.resetForm();
       })
       .catch(error => {
-        console.log('not working');
-      })
-  }
-
+        console.log(error);
+      });
+  };
+  
   return (
-    <div >
+    <div>
       <h1>Sign Up Here!</h1>
       <Form>
         <label>
           User Name:
-                <Field
-            type="text"
-            name="userName"
-            placeholder="userName"
-          />
+          <Field type="text" name="userName" placeholder="userName" />
         </label>
         <label>
           Password:
-                <Field
-            type="password"
-            name="password"
-            placeholder="Password"
-          />
+          <Field type="password" name="password" placeholder="Password" />
         </label>
-        <Link to='/survey'>
-          <button onClick={() => {handleSubmit()}}>Submit</button>
+        <Link to="/survey">
+          <button
+            onClick={() => {
+              handleSubmit();
+            }}
+          >
+            Submit
+          </button>
         </Link>
       </Form>
-      <p>
-        If you allready have an account click here!
-      </p>
+      <p>If you allready have an account click here!</p>
       <Link to="/login">
         <button>LogIn</button>
       </Link>
@@ -68,12 +70,10 @@ const SignUpWithFormik = withFormik({
   validationSchema: Yup.object().shape({
     userName: Yup.string().required(""),
     password: Yup.string().required("")
-  }),
-
+  })
 })(SignUp);
 
 export default SignUpWithFormik;
-
 
 // const handleFormChange = (e => {
 //   if (e.target.type === "checkbox") {
@@ -104,4 +104,4 @@ export default SignUpWithFormik;
 //   console.log(e.target.username.value);
 //   console.log(e.target.password.value);
 //   console.log(e.target.remember_pass.value);
-// }; 
+// };
