@@ -8,9 +8,36 @@ import { Link } from 'react-router-dom';
 import * as Yup from "yup";
 
 
-
-
 function SignUp(props) {
+//   console.log("props");
+//   const {formValues, setFormValues} = props;
+//   const handleChange = e => {
+//     setFormValues({ ...formValues, [e.target.name]: e.target.value });
+//   };
+//   const handleSubmit = e => {
+//       e.preventDefault();
+//       axios.post("https://friend-finder-backend.herokuapp.com/api/auth/register",formValues)
+//       .then(res => {
+//           console.log(res);
+//           props.history.push("/login");
+//       })
+//       .catch(err => {
+//           console.log(err);
+//       })
+//   }
+//   console.log("form values", formValues);
+//   return (
+//     <div>
+//       <form>
+//         <input value={formValues.username} placeholder="username" name="username" onChange={handleChange} />
+//         <input value={formValues.password} placeholder="password" name="password" onChange={handleChange} />
+//         <button onClick={handleSubmit} >Submit</button>
+//       </form>
+//     </div>
+//   );
+// };
+
+// export default SignUp;
 
   return (
     <div >
