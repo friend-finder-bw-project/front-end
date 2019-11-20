@@ -1,50 +1,45 @@
-// Colin and Luis
-
-import React, { useState } from 'react';
-import ReactDom from 'react-dom';
-import { withFormik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from "yup";
-import axios from 'axios';
+// Luis & Colin
+import React, { useState, useEffect } from "react";
+import ReactDom from "react-dom";
+import axios from "axios";
 
 function LoginForm(props) {
 
-    return (
-        <div>
-            <h1>Login Screen</h1>
-            <Form>
-                <label>
-                    User Name:
-                <Field
-                        type="text"
-                        name="userName"
-                        placeholder="userName"
-                    />
-                </label>
-                <label>
-                    Password:
-                <Field
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                    />
-                </label>
-                <input type="submit" />
-            </Form>
-        </div>
-    );
+  const [returningUser, setReturningUser] = useState({});
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const data = {
+      username: event.target.username.value,
+      password: event.target.password.value
+    };
+    setReturningUser(data);
+  }
+  useEffect(() => {
+    axios
+      .post(
+        "https://friend-finder-server.herokuapp.com/api/auth/login",
+        returningUser
+      )
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, [returningUser]);
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        User name:
+        <input name="username" type="text" />
+        Password:
+        <input name="password" type="password" />
+        <button>SignUp</button>
+      </form>
+    </div>
+  );
 }
 
-const LoginFormWithFormik = withFormik({
-    mapPropsToValues() {
-        return {
-            userName: "",
-            password: "",
-        };
-    },
-    validationSchema: Yup.object().shape({
-        userName: Yup.string().required(""),
-        password: Yup.string().required(""),
-    })
-})(LoginForm);
-
-export default LoginFormWithFormik;
+export default LoginForm
