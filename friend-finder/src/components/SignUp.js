@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import ReactDom from "react-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import styled from 'styled-components';
 
 function SignUp(props) {
   const [newUser, setNewUser] = useState({});
@@ -30,18 +31,35 @@ function SignUp(props) {
   }, [newUser]);
 
   return (
-    <div>
+    <StyledSignUp>
       <form onSubmit={handleSubmit}>
-        User name:
+        <p>User name:</p>
         <input name="username" type="text" />
-        Password:
+        <p>Password:</p>
         <input name="password" type="password" />
         {/* <Link to="/survey"> */}
           <button>SignUp</button>
         {/* </Link> */}
       </form>
-    </div>
+    </StyledSignUp>
   );
 }
 
 export default SignUp;
+
+
+// Styling here:
+
+const StyledSignUp = styled.div`
+  display: flex;
+  justify-content: center;
+  
+  & form {
+    display: flex;
+    flex-direction: column;
+
+    & button {
+      
+    }
+  }
+`;

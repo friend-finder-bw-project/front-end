@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import axios from "axios";
 
 function Survey() {
-  const [questions, setQuestions] = useState([]);
+  //const [questions, setQuestions] = useState([]);
   const [survey, setSurvey] = useState({});
 
   function handleSubmit(event) {
@@ -18,10 +18,10 @@ function Survey() {
   }
   useEffect(() => {
     axios
-      .get("https://friend-finder-server.herokuapp.com/api/users/45/questions")
+      .get("https://friend-finder-server.herokuapp.com/api/users/45/question")
       .then(response => {
-        const questions = response.data;
-        questions.map(e => {
+        const question = response.data;
+        question.map(e => {
           console.log(e.question);
         });
       })
