@@ -36,9 +36,9 @@ function SignUp(props) {
         <input name="username" type="text" />
         Password:
         <input name="password" type="password" />
-        <Link to="/survey">
+        {/* <Link to="/survey"> */}
           <button>SignUp</button>
-        </Link>
+        {/* </Link> */}
       </form>
     </div>
   );
