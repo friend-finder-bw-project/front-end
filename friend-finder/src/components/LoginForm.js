@@ -22,7 +22,8 @@ function LoginForm(props) {
         returningUser
       )
       .then(response => {
-        console.log(response.data);
+        console.log('test')
+        localStorage.setItem('token', response.data.token)
       })
       .catch(error => {
         console.log(error);
