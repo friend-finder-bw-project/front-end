@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from "react";
 import ReactDom from "react-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function SignUp(props) {
-
   const [newUser, setNewUser] = useState({});
 
   function handleSubmit(event) {
@@ -36,7 +36,9 @@ function SignUp(props) {
         <input name="username" type="text" />
         Password:
         <input name="password" type="password" />
-        <button>SignUp</button>
+        <Link to="/survey">
+          <button>SignUp</button>
+        </Link>
       </form>
     </div>
   );
