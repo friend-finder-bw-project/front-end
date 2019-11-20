@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from "react";
 import ReactDom from "react-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function LoginForm(props) {
-
   const [returningUser, setReturningUser] = useState({});
 
   function handleSubmit(event) {
@@ -22,7 +22,8 @@ function LoginForm(props) {
         returningUser
       )
       .then(response => {
-        console.log(response.data);
+        console.log('test')
+        localStorage.setItem('token', response.data.token)
       })
       .catch(error => {
         console.log(error);
@@ -36,10 +37,12 @@ function LoginForm(props) {
         <input name="username" type="text" />
         Password:
         <input name="password" type="password" />
-        <button>SignUp</button>
+        <Link to="/profile">
+          <button>SignUp</button>
+        </Link>
       </form>
     </div>
   );
 }
 
-export default LoginForm
+export default LoginForm;
