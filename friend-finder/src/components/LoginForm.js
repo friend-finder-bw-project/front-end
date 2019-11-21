@@ -3,6 +3,9 @@ import React, { useRef } from "react";
 import axios from "axios";
 import styled from "styled-components";
 
+
+
+
 function LoginForm(props) {
   const usernameRef = useRef("");
   const passwordRef = useRef("");
@@ -26,6 +29,7 @@ function LoginForm(props) {
 
   return (
     <StyledLogin>
+      
       <h1>Welcome Back to Friend Finder</h1>
       <h2>Please Login below!</h2>
       <form onSubmit={handleSubmit}>
@@ -33,8 +37,9 @@ function LoginForm(props) {
         <input name="username" type="text" ref={usernameRef} />
         <p>Password:</p>
         <input name="password" type="password" ref={passwordRef} />
-        <button type="submit">SignUp</button>
+        <button type="submit">Log-in</button>
       </form>
+      
     </StyledLogin>
   );
 }
@@ -49,7 +54,11 @@ const StyledLogin = styled.div`
   align-items: center;
   margin: 1vw;
   padding: 1vw;
-  background: papayawhip;
+  background: lightblue;
+
+  h1, h2 {
+    color: orange;
+  }
 
   & form {
     display: flex;

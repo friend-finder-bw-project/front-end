@@ -4,13 +4,13 @@ import React from "react";
 import styled from "styled-components";
 
 const FriendsCard = props => {
-  const matchProbability = (props.friends.match_probability / 13) * 100;
+  const matchProbability = (props.friends.match_probability / 15) * 100;
   const matchingPercentage = matchProbability.toFixed(2);
 
   return (
     <Card>
-      <h2>Username: {props.friends.username} </h2>
-      <h3>Match propability: {matchingPercentage}%</h3>
+      <h2>Username: <span>{props.friends.username}</span> </h2>
+      <h3>Match propability: <span>{matchingPercentage}%</span></h3>
     </Card>
   );
 };
@@ -26,4 +26,10 @@ const Card = styled.div`
   margin: 1vw;
   padding: 1vw;
   background: lightblue;
+  color: orange;
+
+  & span {
+    color: black;
+    
+  }
 `;

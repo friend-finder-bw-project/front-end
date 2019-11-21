@@ -18,9 +18,10 @@ function App() {
     password: ""
   });
   return (
-    <div className="App">
+    <div className="Card">
       <Nav />
       <StyledDiv>
+        
         <Route exact path="/" component={SignUp} />
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/survey" component={Survey} />
