@@ -1,71 +1,71 @@
 // Luis & Colin
-import React, { useState, useEffect } from "react";
-import ReactDom from "react-dom";
+import React, { useRef } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import styled from 'styled-components';
+import styled from "styled-components";
 
-function SignUp(props) {
-  const [newUser, setNewUser] = useState({});
+function SignUpForm(props) {
+  const usernameRef = useRef("");
+  const passwordRef = useRef("");
 
   function handleSubmit(event) {
     event.preventDefault();
     const data = {
-      username: event.target.username.value,
-      password: event.target.password.value
+      username: usernameRef.current.value,
+      password: passwordRef.current.value
     };
-    setNewUser(data);
-  }
-  useEffect(() => {
     axios
-      .post(
-        "https://friend-finder-server.herokuapp.com/api/auth/register",
-        newUser
-      )
+      .post("https://friend-finder-server.herokuapp.com/api/auth/register", data)
       .then(response => {
-        console.log(response.data);
+        props.history.push('/login');
       })
       .catch(error => {
         console.log(error);
       });
-  }, [newUser]);
+  }
 
   return (
     <StyledSignUp>
+      <h1>Welcome to Friend Finder</h1>
+      <h2>Please register to start the survey</h2>
       <form onSubmit={handleSubmit}>
         <p>User name:</p>
-        <input name="username" type="text" />
+        <input name="username" type="text" ref={usernameRef} />
         <p>Password:</p>
-        <input name="password" type="password" />
-        {/* <Link to="/survey"> */}
-          <button>SignUp</button>
-        {/* </Link> */}
+        <input name="password" type="password" ref={passwordRef} />
+        <button type="submit">SignUp</button>
       </form>
     </StyledSignUp>
   );
 }
 
-export default SignUp;
-
+export default SignUpForm;
 
 // Styling here:
 
 const StyledSignUp = styled.div`
   display: flex;
-  justify-content: center;
-  
+  flex-direction: column;
+  align-items: center;
+  margin: 1vw;
+  padding: 1vw;
+  background: papayawhip;
+
   & form {
     display: flex;
     flex-direction: column;
 
-    & button {
-      /* Adapt the colors based on primary prop */
-    background: ${props => props.primary ? "palevioletred" : "white"};
-    color: ${props => props.primary ? "white" : "palevioletred"};
-    font-size: 1em;
-    margin: 1em;
-    padding: 0.25em 1em;
-    border: 2px solid palevioletred;
-    border-radius: 3px;
+    & input {
+      border-color: papayawhip;
     }
-  }`;
+
+    & button {
+      background: white;
+      color: palevioletred;
+      font-size: 1em;
+      margin: 1em;
+      padding: 0.25em 1em;
+      border: 2px solid palevioletred;
+      border-radius: 3px;
+    }
+  }
+`;
