@@ -5,11 +5,12 @@ import styled from "styled-components";
 
 const FriendsCard = props => {
   const matchProbability = (props.friends.match_probability / 15) * 100;
-  const matchingPercentage = matchProbability.toFixed(2);
+  const matchingPercentage = matchProbability.toFixed(0);
 
   return (
     <Card>
-      <h2>Username: <span>{props.friends.username}</span> </h2>
+      
+      <h2> <span>{props.friends.username}</span> </h2>
       <h3>Match propability: <span>{matchingPercentage}%</span></h3>
     </Card>
   );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import * as Yup from "yup";
 import axios from "axios";
 import axiosWithAuth from "./axiosWithAuth";
@@ -7,41 +7,38 @@ const messagesApi = "https://friend-finder-server.herokuapp.com/api/users/messag
 
 function Messages(props) {
   const [sentMessage, setSentMessage] = useState();
-  const [recievedMessage, setRecievedMessage]
+  const [recievedMessage, setRecievedMessage] = useState();
   
   useEffect(() => {
     axiosWithAuth()
       .get(messagesApi)
       .then(res => {
           console.log(res);
-        // setSentMessage(res.data);
-        // setRecievedMessage(res.data);
+         setSentMessage(res.data);
+         setRecievedMessage(res.data);
       })
       .catch(err => {
         console.log(err);
       });
   }, []);
-  const handleSubmit = answerId => {
-    const message = {
-      recieverId: messagePlaceHolder
+//  const handleSubmit = messageId => {
+//          const message = {
+//        recieverId: 
       
-    };
-    axiosWithAuth()
-      .post(messagesApi, message)
-      .then(res => {
-        console.log(res);
-        setMessage(message);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-    };
+//     };
+    // axiosWithAuth()
+    //   .post(messagesApi, sentMessage)
+    //   .then(res => {
+    //     console.log(res);
+    //     setSentMessage(sentMessage);
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
+    // };
+
     return (
-        <StyledQuestions>
-          <div>
-            
-          </div>
-        </StyledQuestions>
+       <h1></h1>
       );
-    }
+}
     export default Messages;

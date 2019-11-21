@@ -9,6 +9,7 @@ import SignUp from "./components/SignUp";
 import Survey from "./components/Survey";
 import Profile from "./components/Profile";
 import FriendsList from "./components/FriendsList";
+import Messages from "./components/Messages";
 import "./App.css";
 import PrivateRoute from "./components/PrivateRoute";
 
@@ -27,6 +28,7 @@ function App() {
         <Route exact path="/survey" component={Survey} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/friendslist" component={FriendsList} />
+        <Route exact path="/messages" component={Messages} />
       </StyledDiv>
     </div>
   );

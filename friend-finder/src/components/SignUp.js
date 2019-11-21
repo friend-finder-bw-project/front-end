@@ -57,6 +57,7 @@ const StyledSignUp = styled.div`
   & p {
     color: black;
     lighten: 40%;
+    text-align: center;
   }
 
   & form {
