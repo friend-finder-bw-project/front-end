@@ -13,7 +13,7 @@ function Messages(props) {
     axiosWithAuth()
       .get(messagesApi)
       .then(res => {
-          console.log(res);
+          console.log(res.data);
          setSentMessage(res.data);
          setRecievedMessage(res.data);
       })
@@ -21,24 +21,19 @@ function Messages(props) {
         console.log(err);
       });
   }, []);
-//  const handleSubmit = messageId => {
-//          const message = {
-//        recieverId: 
-      
-//     };
-    // axiosWithAuth()
-    //   .post(messagesApi, sentMessage)
-    //   .then(res => {
-    //     console.log(res);
-    //     setSentMessage(sentMessage);
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
-    // };
 
-    return (
-       <h1></h1>
-      );
-}
-    export default Messages;
+
+   // sender_id: 1, sender_username: "James", message:
+
+   
+  //  setRecievedMessage.map(() => {
+  //     return(
+  //       <div>
+  //         {recievedMessage.message}
+  //       </div>
+  //     )
+  //  })
+};
+
+
+export default Messages;
