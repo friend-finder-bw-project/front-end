@@ -1,25 +1,26 @@
 // Colin and Luis
 
-import React from 'react';
+import React from "react";
+import styled from "styled-components";
 
-
-const ProfileCard = (props) => {
-
-    return (
-
-    <div>
-        <h1>First name: {props.newUser.firstName} </h1>
-        <h2>Surname:    {props.newUser.lastName} </h2>
-        <h2>User name:  {props.newUser.userName} </h2>
-        <h2>Email:      {props.newUser.mailAdress} </h2>
-
-    </div>
-
-    )
-}
-
+const ProfileCard = props => {
+  return (
+    <Card>
+      <h1>Here should be your Profile page</h1>
+      <h2>User name: {props.user.username} </h2>
+    </Card>
+  );
+};
 
 export default ProfileCard;
 
+// Styling here:
 
-
+const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1vw;
+  padding: 1vw;
+  background: lightblue;
+`;
