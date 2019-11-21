@@ -6,57 +6,58 @@ import axios from "axios";
 import axiosWithAuth from "./axiosWithAuth";
 import styled from "styled-components";
 
-function Survey() {
-  const [questions, setQuestions] = useState("");
+function Survey(props) {
+  const [question, setQuestion] = useState("");
   const [answers, setAnswers] = useState([]);
-  const [returningAnswer, setReturningAnswer] = useState({});
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    const info = {
-      questionId: event.target.questinId.value,
-      answerId: event.target.answerId.value
-    };
-    setQuestions(info);
-  }
+  const [returningAnswer, setReturningAnswer] = useState(null);
   useEffect(() => {
     axiosWithAuth()
       .get("https://friend-finder-server.herokuapp.com/api/users/question")
-      .then(response => {
-        setQuestions(response.data.question);
-        setAnswers(response.data.answers);
+      .then(res => {
+        setQuestion(res.data);
+        setAnswers(res.data.answers);
       })
-      .catch(error => {
-        console.log(error);
-      });
-  }, [questions]);
-
-  useEffect(() => {
-    axios
-      .post(
-        "https://friend-finder-server.herokuapp.com/api/users/question",
-        returningAnswer
-      )
-      .then(response => {
-        console.log(response.data);
-      })
-      .catch(error => {
-        console.log(error);
+      .catch(err => {
+        console.log(err);
       });
   }, [returningAnswer]);
-
+  const handleSubmit = answerId => {
+    const answer = {
+      questionId: question.question_id,
+      answerId: answerId
+    };
+    axiosWithAuth()
+      .post(
+        "https://friend-finder-server.herokuapp.com/api/users/question",
+        answer
+      )
+      .then(res => {
+        console.log(res);
+        setReturningAnswer(answer);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
   return (
     <StyledQuestions>
       <div>
-        <Title>Question: {questions}</Title>
-        {answers.map(e => {
-          return <AnswerButton key={e.id} onClick={handleSubmit(e.id)}> {e.answer} </AnswerButton>;
+        <Title>Question: {question.question}</Title>
+        {answers.map(answer => {
+          return (
+            <AnswerButton
+              key={answer.id}
+              value={answer.id}
+              onClick={() => handleSubmit(answer.id)}
+            >
+              {answer.answer}
+            </AnswerButton>
+          );
         })}
       </div>
     </StyledQuestions>
   );
 }
-
 export default Survey;
 
 // Styling here:
@@ -74,11 +75,11 @@ const Title = styled.h1`
 `;
 
 const AnswerButton = styled.button`
-    background: white;
-    color: palevioletred;
-    font-size: 1em;
-    margin: 1em;
-    padding: 0.25em 1em;
-    border: 2px solid palevioletred;
-    border-radius: 3px;
+  background: white;
+  color: palevioletred;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
 `;

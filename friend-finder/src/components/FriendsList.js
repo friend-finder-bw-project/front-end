@@ -12,7 +12,7 @@ export default function Profile(props) {
     axiosWithAuth()
       .get("https://friend-finder-server.herokuapp.com/api/users/matches")
       .then(response => {
-        console.log(response.data);
+        setFriends(response.data);
       })
       .catch(error => {
         console.log(error);
