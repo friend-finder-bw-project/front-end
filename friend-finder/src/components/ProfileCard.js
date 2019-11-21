@@ -23,4 +23,5 @@ const Card = styled.div`
   margin: 1vw;
   padding: 1vw;
   background: lightblue;
+  color: orange;
 `;

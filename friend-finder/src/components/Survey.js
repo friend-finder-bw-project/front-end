@@ -45,6 +45,7 @@ function Survey(props) {
         <Title>Question: {question.question}</Title>
         {answers.map(answer => {
           return (
+            <Buttons>
             <AnswerButton
               key={answer.id}
               value={answer.id}
@@ -52,6 +53,7 @@ function Survey(props) {
             >
               {answer.answer}
             </AnswerButton>
+            </Buttons>
           );
         })}
       </div>
@@ -65,21 +67,31 @@ export default Survey;
 const StyledQuestions = styled.div`
   margin: 1vw;
   padding: 1vw;
-  background: papayawhip;
+  background: lightblue;
+`;
+
+const Buttons =styled.div`
+display: flex;
+flex-direction: row;
+justify-content: center;
 `;
 
 const Title = styled.h1`
-  font-size: 1.5em;
+  
+font-size: 1.5em;
   text-align: center;
-  color: palevioletred;
+  color: orange;
+   
 `;
 
+
 const AnswerButton = styled.button`
-  background: white;
-  color: palevioletred;
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
+    display: flex;
+    background: white;
+    color: black;
+    font-size: 1em;
+    margin: 1em;
+    padding: 0.25em 1em;
+    border: 2px solid black;
+    border-radius: 3px;
 `;

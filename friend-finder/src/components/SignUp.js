@@ -1,4 +1,5 @@
 // Luis & Colin
+//colins commit
 import React, { useRef } from "react";
 import axios from "axios";
 import styled from "styled-components";
@@ -33,6 +34,8 @@ function SignUpForm(props) {
         <p>Password:</p>
         <input name="password" type="password" ref={passwordRef} />
         <button type="submit">SignUp</button>
+        <p>Already have an account login here</p>
+        <button type="submit">Login</button>
       </form>
     </StyledSignUp>
   );
@@ -49,9 +52,10 @@ const StyledSignUp = styled.div`
   margin: 1vw;
   padding: 1vw;
   background: lightblue;
+  color: orange;
 
-  & h1 {
-    color: orange;
+  & p {
+    color: black;
     lighten: 40%;
   }
 
