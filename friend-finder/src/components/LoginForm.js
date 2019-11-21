@@ -56,6 +56,10 @@ const StyledLogin = styled.div`
   padding: 1vw;
   background: lightblue;
 
+  p {
+    text-align: center;
+  }
+
   h1, h2 {
     color: orange;
   }

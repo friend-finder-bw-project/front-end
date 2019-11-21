@@ -42,7 +42,7 @@ function Survey(props) {
   return (
     <StyledQuestions>
       <div>
-        <Title>Question: {question.question}</Title>
+        <Title>Questions: {question.question}</Title>
         {answers.map(answer => {
           return (
             <Buttons>
