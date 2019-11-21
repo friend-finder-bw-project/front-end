@@ -48,7 +48,12 @@ const StyledSignUp = styled.div`
   align-items: center;
   margin: 1vw;
   padding: 1vw;
-  background: papayawhip;
+  background: lightblue;
+
+  & h1 {
+    color: orange;
+    lighten: 40%;
+  }
 
   & form {
     display: flex;
