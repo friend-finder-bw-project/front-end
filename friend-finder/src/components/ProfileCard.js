@@ -1,25 +1,14 @@
 // Colin and Luis
 
-import React from 'react';
+import React from "react";
 
-
-const ProfileCard = (props) => {
-
-    return (
-
+const ProfileCard = props => {
+  return (
     <div>
-        <h1>First name: {props.newUser.firstName} </h1>
-        <h2>Surname:    {props.newUser.lastName} </h2>
-        <h2>User name:  {props.newUser.userName} </h2>
-        <h2>Email:      {props.newUser.mailAdress} </h2>
-
+      <h1>Here should be your Profile page</h1>
+      <h2>User name: {props.user.username} </h2>
     </div>
-
-    )
-}
-
+  );
+};
 
 export default ProfileCard;
-
-
-
