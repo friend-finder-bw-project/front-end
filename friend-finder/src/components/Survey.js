@@ -14,14 +14,14 @@ function Survey() {
   function handleSubmit(event) {
     event.preventDefault();
     const info = {
-      question_id: event.target.questin_id.value,
-      answer_id: event.target.answer_id.value
+      questionId: event.target.questinId.value,
+      answerId: event.target.answerId.value
     };
     setQuestions(info);
   }
   useEffect(() => {
     axiosWithAuth()
-      .get("https://friend-finder-server.herokuapp.com/api/users/45/question")
+      .get("https://friend-finder-server.herokuapp.com/api/users/question")
       .then(response => {
         setQuestions(response.data.question);
         setAnswers(response.data.answers);
@@ -34,7 +34,7 @@ function Survey() {
   useEffect(() => {
     axios
       .post(
-        "https://friend-finder-server.herokuapp.com/api/users/45/question",
+        "https://friend-finder-server.herokuapp.com/api/users/question",
         returningAnswer
       )
       .then(response => {
@@ -50,7 +50,7 @@ function Survey() {
       <div>
         <Title>Question: {questions}</Title>
         {answers.map(e => {
-          return <AnswerButton key={e.id}> {e.answer} </AnswerButton>;
+          return <AnswerButton key={e.id} onClick={handleSubmit(e.id)}> {e.answer} </AnswerButton>;
         })}
       </div>
     </StyledQuestions>
