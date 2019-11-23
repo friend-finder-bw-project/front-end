@@ -3,10 +3,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import MediaQuery from 'react-responsive';
 
 export default function Nav() {
   return (
-    <Navigation>
+    <Navigation className="Nav">
       <Link to="/">Sign Up</Link>
 
       <Link to="/login">Login</Link>
@@ -19,10 +20,18 @@ export default function Nav() {
 
       <Link to="/survey">Questions</Link>
     </Navigation>
+
+      
+
+
   );
 }
 
+    
 // Styling here:
+
+
+
 
 const Navigation = styled.nav`
     max-width: 120rem;
@@ -33,6 +42,7 @@ const Navigation = styled.nav`
     padding: 0 2rem;;
     justify-content: space-between;
     height: 5rem;
+
 
     & a {
         color: #69C8ECFF;
@@ -46,4 +56,6 @@ const Navigation = styled.nav`
         &:hover {
             color: #E762D7FF;
             text-decoration: underline;
+
+            
     }`;

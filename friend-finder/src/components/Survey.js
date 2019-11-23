@@ -51,6 +51,7 @@ function Survey(props) {
               value={answer.id}
               onClick={() => handleSubmit(answer.id)}
             >
+              <button onClick={(event) => event.preventDefault()}>text</button>
               {answer.answer}
             </AnswerButton>
             </Buttons>
