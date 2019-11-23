@@ -30,3 +30,13 @@
 .App-link {
   color: #09d3ac;
 }
+
+@media (max-width: 500px) {
+  .Nav{
+   
+   display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+  }
+}
